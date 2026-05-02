@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\CPE494-erp-invoice-app-by-ai.props" />
+</Project>

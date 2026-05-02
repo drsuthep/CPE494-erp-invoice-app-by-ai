@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "CPE494-erp-invoice-app-by-ai/1.0.0": {
+        "runtime": {
+          "CPE494-erp-invoice-app-by-ai.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CPE494-erp-invoice-app-by-ai/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
