@@ -1,46 +1,82 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CPE494_erp_invoice_app_by_ai</title>
+    <title>@ViewData["Title"] - Zen Green ERP</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/zen-green.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CPE494_erp_invoice_app_by_ai.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">CPE494_erp_invoice_app_by_ai</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <div class="erp-top-bar d-flex justify-content-between align-items-center px-3 py-1">
+            <div>
+                <span>Database: [DB_PLACEHOLDER]</span>
+            </div>
+            <div>
+                <span>User: [USER_PLACEHOLDER]</span>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark zen-main-nav">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">ZEN ERP</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="masterDataDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Master Data
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="masterDataDropdown">
+                                <li><a class="dropdown-item" href="#">Customers</a></li>
+                                <li><a class="dropdown-item" href="#">Products</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="transactionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Transactions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="transactionsDropdown">
+                                <li><a class="dropdown-item" href="#">Invoices</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Sales Orders</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="reportsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Reports
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="reportsDropdown">
+                                <li><a class="dropdown-item" href="#">Sales Report</a></li>
+                                <li><a class="dropdown-item" href="#">Customer Ledger</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="controlDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Control
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="controlDropdown">
+                                <li><a class="dropdown-item" href="#">User Management</a></li>
+                                <li><a class="dropdown-item" href="#">Role Management</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">System Settings</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+
+    <div class="container-fluid">
+        <main role="main" class="pb-3 zen-page-container">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2569 - CPE494_erp_invoice_app_by_ai - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

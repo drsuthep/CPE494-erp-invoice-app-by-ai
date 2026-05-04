@@ -1,48 +1,113 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+/*
+  Styles for the main application layout (_Layout.cshtml).
+  This file defines the look of the header, navigation, main content area, and footer.
+  It uses CSS variables defined in site.css for theme consistency.
+*/
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--zen-surface);
 }
 
-a {
-  color: #0077cc;
+main {
+    flex: 1;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1.5rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--zen-border);
+    height: 60px;
+    color: var(--zen-primary);
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.app-header .app-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--zen-primary);
+    text-decoration: none;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+.app-header .app-brand i {
+    font-size: 1.75rem;
+    color: var(--zen-primary-soft);
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.app-header .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.9rem;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.user-info .info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.main-nav {
+    background-color: var(--zen-primary);
+    padding: 0 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.main-nav .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.main-nav .nav-item .nav-link {
+    color: #ffffff;
+    padding: 0.85rem 1.25rem;
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+    border-bottom: 4px solid transparent;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.main-nav .nav-item .nav-link:hover,
+.main-nav .nav-item .nav-link:focus {
+    background-color: var(--zen-primary-soft);
+    border-bottom-color: var(--zen-accent);
+}
+
+.main-nav .nav-item .nav-link.active {
+    background-color: var(--zen-primary-soft);
+    border-bottom-color: var(--zen-accent);
+    font-weight: 700;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    background-color: var(--zen-surface-strong);
+    color: var(--zen-primary-soft);
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--zen-border);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.footer a {
+    color: var(--zen-primary);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
 }
