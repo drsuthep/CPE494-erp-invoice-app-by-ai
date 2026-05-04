@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\CPE494-erp-invoice-app-by-ai.props" />
-</Project>
