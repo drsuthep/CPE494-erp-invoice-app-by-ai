@@ -68,7 +68,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <!-- Future nav links will be added here -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="masterDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Master
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="masterDropdown">
+                            <li><a class="dropdown-item" href="{% url 'products_list' %}">Product</a></li>
+                            <li><a class="dropdown-item" href="{% url 'customers:list' %}">Customer</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="transactionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Transactions
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="transactionsDropdown">
+                            <li><a class="dropdown-item" href="{% url 'invoices_list' %}">Invoice</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Products</h5>
+            <div>
+                <a href="{% url 'products_create' %}" class="btn btn-primary" title="Create new product">
+                    <i class="fa-solid fa-plus"></i> New
+                </a>
+                <a href="{% url 'landing' %}" class="btn btn-outline-secondary" title="Close">
+                    <i class="fa-solid fa-xmark"></i> Close
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <p class="text-muted">Product module not yet implemented.</p>
+    </div>
+</div>
+{% endblock %}

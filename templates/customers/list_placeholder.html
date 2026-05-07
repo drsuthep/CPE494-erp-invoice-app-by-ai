@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Customers{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center" style="background-color: var(--zen-primary-soft); color: white;">
+            <h5 class="mb-0">Customers</h5>
+            <div>
+                <a href="{% url 'customers:create' %}" class="btn btn-primary" title="Create new customer">
+                    <i class="fa-solid fa-plus"></i> New
+                </a>
+                <a href="{% url 'landing' %}" class="btn btn-outline-secondary" title="Close">
+                    <i class="fa-solid fa-xmark"></i> Close
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="text-muted">Customer list view will be implemented in a future sprint.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

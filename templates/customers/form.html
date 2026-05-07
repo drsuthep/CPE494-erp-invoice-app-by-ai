@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}{% if obj %}Edit Customer{% else %}New Customer{% endif %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header">
+      <h4>{% if obj %}Edit Customer: {{ obj.code }}{% else %}New Customer{% endif %}</h4>
+    </div>
+    <div class="card-body">
+      <form method="post" novalidate>
+        {% csrf_token %}
+
+        <div class="row g-3">
+          <!-- Code -->
+          <div class="col-12 col-md-6">
+            <label for="{{ form.code.id_for_label }}" class="form-label">Code <span class="text-danger">*</span></label>
+            {{ form.code }}
+            {% if form.code.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.code.errors|striptags }}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Name -->
+          <div class="col-12 col-md-6">
+            <label for="{{ form.name.id_for_label }}" class="form-label">Name <span class="text-danger">*</span></label>
+            {{ form.name }}
+            {% if form.name.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.name.errors|striptags }}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Address Line 1 -->
+          <div class="col-12 col-md-6">
+            <label for="{{ form.address_line_1.id_for_label }}" class="form-label">Address Line 1</label>
+            {{ form.address_line_1 }}
+            {% if form.address_line_1.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.address_line_1.errors|striptags }}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Address Line 2 -->
+          <div class="col-12 col-md-6">
+            <label for="{{ form.address_line_2.id_for_label }}" class="form-label">Address Line 2</label>
+            {{ form.address_line_2 }}
+            {% if form.address_line_2.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.address_line_2.errors|striptags }}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- City -->
+          <div class="col-12 col-md-6">
+            <label for="{{ form.city.id_for_label }}" class="form-label">City</label>
+            {{ form.city }}
+            {% if form.city.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.city.errors|striptags }}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Province -->
+          <div class="col-12 col-md-6">
+            <label for="{{ form.province.id_for_label }}" class="form-label">Province / State</label>
+            {{ form.province }}
+            {% if form.province.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.province.errors|striptags }}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Country -->
+          <div class="col-12 col-md-6">
+            <label for="{{ form.country.id_for_label }}" class="form-label">Country</label>
+            {{ form.country }}
+            {% if form.country.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.country.errors|striptags }}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Postal Code -->
+          <div class="col-12 col-md-6">
+            <label for="{{ form.postal_code.id_for_label }}" class="form-label">Postal Code</label>
+            {{ form.postal_code }}
+            {% if form.postal_code.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.postal_code.errors|striptags }}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Phone -->
+          <div class="col-12 col-md-6">
+            <label for="{{ form.phone.id_for_label }}" class="form-label">Phone</label>
+            {{ form.phone }}
+            {% if form.phone.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.phone.errors|striptags }}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Email -->
+          <div class="col-12 col-md-6">
+            <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.email.errors|striptags }}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Notes -->
+          <div class="col-12">
+            <label for="{{ form.notes.id_for_label }}" class="form-label">Notes</label>
+            {{ form.notes }}
+            {% if form.notes.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.notes.errors|striptags }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Action Row -->
+        <div class="mt-4 pt-3 border-top">
+          <button type="submit" class="btn btn-primary" title="Save">
+            <i class="fa-solid fa-floppy-disk"></i> Save
+          </button>
+          {% if obj %}
+            <button type="button" class="btn btn-danger" title="Delete"
+                    data-action="delete"
+                    data-display="{{ obj.code }}"
+                    data-url="{% url 'customers:delete' obj.id %}">
+              <i class="fa-solid fa-trash"></i> Delete
+            </button>
+          {% endif %}
+          <a href="{% url 'customers:list' %}" class="btn btn-secondary" data-action="close" title="Close">
+            <i class="fa-solid fa-xmark"></i> Close
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Invoices{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Invoices</h5>
+            <div class="d-flex gap-2">
+                <a href="{% url 'invoices_create' %}" class="btn btn-primary" title="Create new invoice">
+                    <i class="fa-solid fa-plus"></i> New
+                </a>
+                <a href="{% url 'landing' %}" class="btn btn-outline-secondary" title="Close">
+                    <i class="fa-solid fa-xmark"></i> Close
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="text-muted">Invoice module not yet implemented.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
