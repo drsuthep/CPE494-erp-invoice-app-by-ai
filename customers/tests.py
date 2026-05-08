@@ -59,14 +59,14 @@ class CustomerAppTests(TestCase):
 
     def test_navbar_has_master_dropdown(self):
         """GET / response contains 'Master', 'Customer', 'Product'."""
-        response = self.client.get(reverse('landing'))
+        response = self.client.get(reverse('core:landing'))
         self.assertContains(response, 'Master')
         self.assertContains(response, 'Customer')
         self.assertContains(response, 'Product')
 
     def test_navbar_has_transactions_dropdown(self):
         """GET / response contains 'Transactions', 'Invoice'."""
-        response = self.client.get(reverse('landing'))
+        response = self.client.get(reverse('core:landing'))
         self.assertContains(response, 'Transactions')
         self.assertContains(response, 'Invoice')
 
@@ -88,8 +88,11 @@ class CustomerAppTests(TestCase):
         """GET /customers/new/ response contains '<span class="text-danger">*</span>' near 'code' and 'name' labels."""
         response = self.client.get(reverse('customers:create'))
         self.assertContains(response, '<span class="text-danger">*</span>', count=2)
-        self.assertRegex(response.content.decode(), r'<label for="id_code">.*<span class="text-danger">\*</span></label>')
-        self.assertRegex(response.content.decode(), r'<label for="id_name">.*<span class="text-danger">\*</span></label>')
+        content = response.content.decode('utf-8')
+        # This regex is more robust. It allows for other attributes on the label tag (like class="form-label")
+        # and handles potential whitespace between the label text and the asterisk span.
+        self.assertRegex(content, r'<label for="id_code"[^>]*>Code\s*<span class="text-danger">\*</span></label>')
+        self.assertRegex(content, r'<label for="id_name"[^>]*>Name\s*<span class="text-danger">\*</span></label>')
 
     def test_customer_create_valid_redirects_to_edit(self):
         """POST /customers/new/ with valid data returns 302 to '/customers/\\d+/edit/'."""
@@ -207,7 +210,7 @@ class CustomerAppTests(TestCase):
         """GET responses for all new pages do not contain characters in Unicode range U+0E00-U+0E7F."""
         thai_pattern = re.compile(r'[\u0e00-\u0e7f]')
         urls = [
-            reverse('landing'),
+            reverse('core:landing'),
             reverse('customers:list'),
             reverse('customers:create'),
             reverse('products_list'),

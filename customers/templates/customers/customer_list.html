@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Customers{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Customers</h5>
+        <div>
+            <a href="{% url 'customers:create' %}" class="btn btn-primary" title="Create new Customer">
+                <i class="fa-solid fa-plus"></i> New
+            </a>
+            <a href="{% url 'core:landing' %}" class="btn btn-outline-secondary" title="Close">
+                <i class="fa-solid fa-xmark"></i> Close
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for customer in object_list %}
+                    <tr>
+                        <td><a href="{% url 'customers:edit' customer.id %}">{{ customer.code }}</a></td>
+                        <td>{{ customer.name }}</td>
+                        <td>{{ customer.email }}</td>
+                        <td>{{ customer.phone }}</td>
+                        <td class="text-end">
+                            <a href="{% url 'customers:edit' customer.id %}" class="btn btn-sm btn-outline-secondary" title="Edit">
+                                <i class="fa-solid fa-pen"></i>
+                            </a>
+                            <button type="button" class="btn btn-sm btn-outline-danger" title="Delete"
+                                    data-action="delete" data-display="{{ customer.code }}" data-url="{% url 'customers:delete' customer.id %}">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center">No customers yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
